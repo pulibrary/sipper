@@ -1,6 +1,29 @@
 #!/bin/bash
-#create processing directories
-echo "What is the 
+
+#parse command-line arguments
+while getopts "i:o:l:" opt; do
+  case $opt in
+    i)
+      echo "Now processing the following directory: $OPTARG" >&2
+      ;;
+    o)
+      echo "Output stored at: $OPTARG" >&2
+      ;;
+    l)
+      echo "Log created at: $OPTARG" >&2
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
+#create processing directories 
 
 #create destination directories
 
